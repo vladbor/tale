@@ -1,23 +1,23 @@
-#include('./header.html',{active:'themes', title:'主题管理'})
+#include('./header.html',{active:'themes', title:'Theme management'})
 <div id="app" class="row" v-cloak>
     <loading :active.sync="isLoading" :can-cancel="true"></loading>
     <div class="col-lg-12">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">主题管理</h3>
+                <h3 class="panel-title">Theme management</h3>
             </div>
             <div class="panel-body">
                 <div class="col-md-3 text-center m-t-10" v-for="item in themes">
                     <img class="attach-img bx-shadow" :src="'/templates/themes/' + item.name + '/screenshot.png'" width="300" height="200" :title="item.name"/>
                     <div class="clearfix m-t-10">
-                        主题：<span>{{item.name}}</span> <mark v-if="item.name == '${siteTheme()}'">（当前主题）</mark>
+                        Theme：<span>{{item.name}}</span> <mark v-if="item.name == '${siteTheme()}'">（Current topic）</mark>
                     </div>
                     <div class="clearfix m-t-10">
 
-                        <a v-if="item.name == '${siteTheme()}' && item.hasSetting" class="btn btn-info" href="/admin/theme/setting"><span>主题设置</span></a>
+                        <a v-if="item.name == '${siteTheme()}' && item.hasSetting" class="btn btn-info" href="/admin/theme/setting"><span>Theme setting</span></a>
 
                         <button v-if="item.name != '${siteTheme()}'" @click="active(item.name)" type="button" class="btn btn-danger btn-sm waves-effect waves-light m-t-5">
-                            <i class="fa fa-check-circle"></i> <span>启用该主题</span>
+                            <i class="fa fa-check-circle"></i> <span>Enable this topic</span>
                         </button>
                     </div>
                 </div>
@@ -51,24 +51,24 @@
                     },
                     error: function (error) {
                         console.log(error);
-                        alert(error || '数据加载失败');
+                        alert(error || 'Data loading failed');
                     }
                 });
             },
             active: function (name) {
                 var $vm = this;
                 tale.alertConfirm({
-                    title:'确定启用该主题吗?',
+                    title:'Are you sure you want to enable this topic?',
                     then: function () {
                         tale.post({
                             url : '/admin/api/themes/active',
                             data: {siteTheme: name},
                             success: function (result) {
                                 if(result && result.success){
-                                    tale.alertOk('主题启用成功');
+                                    tale.alertOk('Theme enabled successfully');
                                     $vm.load();
                                 } else {
-                                    tale.alertError(result.msg || '主题启用失败');
+                                    tale.alertError(result.msg || 'Topic activation failed');
                                 }
                             }
                         });

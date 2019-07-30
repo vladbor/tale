@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta content="${_csrf_token}" name="csrf_token"/>
     <link rel="shortcut icon" href="/static/admin/images/favicon.png"/>
-    <title>Tale - 用户登录</title>
+    <title>Tale - User login</title>
     <link href="${cdnURL()}/plugins/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="${cdnURL()}/plugins/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <link href="${cdnURL()}/plugins/limonte-sweetalert2/6.4.1/sweetalert2.min.css" rel="stylesheet">
@@ -70,14 +70,14 @@
                 <div class="form-group">
                     <div class="col-xs-12">
                         <input class=" input-lg input-border" name="username" type="text" required=""
-                               placeholder="请输入账号 :)">
+                               placeholder="Please input Username :)">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-xs-12">
                         <input class=" input-lg input-border" name="password" type="password" required=""
-                               placeholder="请输入密码">
+                               placeholder="Please enter your password">
                     </div>
                 </div>
 
@@ -85,14 +85,14 @@
                     <div class="col-xs-12">
                         <div class="checkbox checkbox-danger">
                             <input id="checkbox-signup" name="rememberMe" type="checkbox">
-                            <label for="checkbox-signup">记住我</label>
+                            <label for="checkbox-signup">Remember me</label>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group text-center m-t-40">
                     <div class="col-xs-12">
-                        <button class="btn btn-danger btn-lg btn-rounded btn-block w-lg waves-effect waves-light" style="box-shadow: 0px 0px 4px #868282;" type="submit">登&nbsp;录
+                        <button class="btn btn-danger btn-lg btn-rounded btn-block w-lg waves-effect waves-light" style="box-shadow: 0px 0px 4px #868282;" type="submit">Deng&nbsp;record
                         </button>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                 if (result && result.success) {
                     window.location.href = '/admin/index';
                 } else {
-                    tale.alertError(result.msg || '登录失败');
+                    tale.alertError(result.msg || 'Login failed');
                 }
             }
         });

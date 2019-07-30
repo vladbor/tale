@@ -12,7 +12,7 @@
                         <img src="/templates/themes/default/static/img/logo.png" alt="${site_title()}">
                     </a>
                     <div class="info-text">
-                        <p>一生有所追求.</p>
+                        <p>Have a lifelong pursuit.</p>
                         <p>Powered by <a href="https://github.com/otale/tale" target="_blank" rel="nofollow">Tale</a>
                         </p>
                         <p>&copy; 2017 <a href="https://github.com/biezhi">biezhi</a></p>
@@ -21,7 +21,7 @@
             </div>
 
             <div class="meta-item meta-posts">
-                <h3 class="meta-title">最新文章</h3>
+                <h3 class="meta-title">Latest articles</h3>
                 #for(article : recent_articles(8))
                 <li>
                     <a href="${permalink()}">${title()}</a>
@@ -30,7 +30,7 @@
             </div>
 
             <div class="meta-item meta-comments">
-                <h3 class="meta-title">最新评论</h3>
+                <h3 class="meta-title">Latest comment</h3>
                 #for(comm : recent_comments(8))
                 <li>
                     <a href="${site_url('/article/')}${comm.cid}#comment-${comm.coid}">${comm.author}：${comm.content}</a>

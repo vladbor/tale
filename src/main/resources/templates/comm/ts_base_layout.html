@@ -1,4 +1,4 @@
-#include('/admin/header.html',{active:'themes', title:'主题设置'})
+#include('/admin/header.html',{active:'themes', title:'Theme setting'})
 <div class="row">
 ${bodyContent}
 </div>
@@ -8,7 +8,7 @@ ${bodyContent}
     var tale = new $.tale();
 
     /**
-     * 保存全局设置
+     * Save global settings
      */
     function saveThemeOptions(formId) {
         var param = $('#' + formId).serialize();
@@ -17,16 +17,16 @@ ${bodyContent}
             data: param,
             success: function (result) {
                 if(result && result.success){
-                    tale.alertOk('设置保存成功');
+                    tale.alertOk('Setup saved successfully');
                 } else {
-                    tale.alertError(result.msg || '设置保存失败');
+                    tale.alertError(result.msg || 'Setup save failed');
                 }
             }
         });
     }
 
     /**
-     * 保存个性化设置
+     * Save personal settings
      */
     function saveIndiviSetting() {
         var param = $('#indivi-form').serialize();
@@ -35,9 +35,9 @@ ${bodyContent}
             data: param,
             success: function (result) {
                 if(result && result.success){
-                    tale.alertOk('设置保存成功');
+                    tale.alertOk('Setup saved successfully');
                 } else {
-                    tale.alertError(result.msg || '设置保存失败');
+                    tale.alertError(result.msg || 'Setup save failed');
                 }
             }
         });

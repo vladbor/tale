@@ -20,11 +20,11 @@
             bodyTag: "section",
             transitionEffect: "slideLeft",
             labels: {
-                previous: "上一步",
-                next: "下一步",
-                finish: "登录后台",
-                loading: '加载中...',
-                current: '当前位置'
+                previous: "Previous",
+                next: "Next",
+                finish: "Finish",
+                loading: 'Loading...',
+                current: 'Current'
             },
             onStepChanging: function (event, currentIndex, newIndex) {
                 tale.showLoading();
@@ -51,12 +51,12 @@
                                 isValid = true;
                             } else {
                                 if (result.msg) {
-                                    tale.alertError(result.msg || '安装失败');
+                                    tale.alertError(result.msg || 'Installation failed');
                                 }
                             }
                         },
                         error: function (e) {
-                            console.log('post异常', e);
+                            console.log('Post exception', e);
                         }
                     });
                     return isValid;

@@ -1,4 +1,4 @@
-#include('./header.html',{active:'setting', title:'系统设置'})
+#include('./header.html',{active:'setting', title:'System settings'})
 <link href="${cdnURL()}/plugins/toggles/toggles.css" rel="stylesheet">
 
 <div id="app" class="row" v-cloak>
@@ -6,52 +6,52 @@
     <div class="col-lg-12">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">系统设置</h3>
+                <h3 class="panel-title">System settings</h3>
             </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="panel panel-color panel-inverse">
                             <div class="panel-heading">
-                                <h3 class="panel-title">站点设置</h3>
+                                <h3 class="panel-title">Site settings</h3>
                             </div>
                             <div class="panel-body">
                                 <form class="form-horizontal" role="form" id="global-form">
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">网站地址</label>
+                                        <label class="col-md-3 control-label">Website address</label>
                                         <div class="col-md-9">
                                             <input type="text" v-model="options.site_url" class="form-control" placeholder="网站地址" required aria-required="true"/>
-                                            <span class="help-block"><small>请和你当前访问的域名保持一致，否则会出现渲染错误。</small></span>
+                                            <span class="help-block"><small>Please keep consistent with the domain name you are currently accessing, otherwise a rendering error will occur.</small></span>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">站点标题</label>
+                                        <label class="col-md-3 control-label">Site title</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" v-model="options.site_title" placeholder="站点子标题" required aria-required="true"/>
+                                            <input type="text" class="form-control" v-model="options.site_title" placeholder="Site subtitle" required aria-required="true"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">站点子标题</label>
+                                        <label class="col-md-3 control-label">Site subtitle</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" v-model="options.site_subtitle" placeholder="站点子标题" required aria-required="true"/>
+                                            <input type="text" class="form-control" v-model="options.site_subtitle" placeholder="Site subtitle" required aria-required="true"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">站点描述</label>
+                                        <label class="col-md-3 control-label">Site description</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" v-model="options.site_description" placeholder="站点描述" required aria-required="true"/>
+                                            <input type="text" class="form-control" v-model="options.site_description" placeholder="Site description" required aria-required="true"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">站点关键词</label>
+                                        <label class="col-md-3 control-label">Site keyword</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" v-model="options.site_keywords" placeholder="站点关键词" required aria-required="true"/>
+                                            <input type="text" class="form-control" v-model="options.site_keywords" placeholder="Site keyword" required aria-required="true"/>
                                         </div>
                                     </div>
 
                                     <div class="clearfix pull-right">
                                         <button type="button" class="btn btn-inverse waves-effect waves-light" @click="saveSetting">
-                                            保存设置
+                                            Save Settings
                                         </button>
                                     </div>
                                 </form>
@@ -62,59 +62,59 @@
                     <div class="col-md-6">
                         <div class="panel panel-color panel-inverse">
                             <div class="panel-heading">
-                                <h3 class="panel-title">高级选项设置</h3>
+                                <h3 class="panel-title">Advanced option settings</h3>
                             </div>
                             <div class="panel-body">
                                 <form class="form-horizontal" role="form" id="advanced-form">
 
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">CND地址</label>
+                                        <label class="col-md-3 control-label">CDN address</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="cdnURL" placeholder="CDN地址" />
-                                            <span class="help-block"><small>该地址用于加载博客后台静态资源，不清楚请勿设置。开启公共CDN选项时此配置无效</small></span>
+                                            <input type="text" class="form-control" name="cdnURL" placeholder="CDN address" />
+                                            <span class="help-block"><small>This address is used to load the blog background static state resource, it is not clear, please do not set. This configuration is invalid when the public CDN option is turned on</small></span>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">清理缓存</label>
+                                        <label class="col-md-3 control-label">Clean up the cache</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="cacheKey" placeholder="请输入缓存前缀，输入*删除所有缓存"/>
+                                            <input type="text" class="form-control" name="cacheKey" placeholder="Please enter the cache prefix, enter * delete all caches"/>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">黑名单IP列表</label>
+                                        <label class="col-md-3 control-label">IP Blacklist</label>
                                         <div class="col-md-9">
-                                            <textarea rows="3" class="form-control" v-model="options.site_block_ips" name="blockIps" placeholder="请输入黑名单IP，如：123.123.33.23,123.123.33.24"></textarea>
+                                            <textarea rows="3" class="form-control" v-model="options.site_block_ips" name="blockIps" placeholder="Please enter the blacklist IP, such as: 123.123.33.23, 123.123.33.24"></textarea>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">卸载插件</label>
+                                        <label class="col-md-3 control-label">Uninstall plugin</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="pluginName" placeholder="请输入插件名，输入*卸载所有插件"/>
+                                            <input type="text" class="form-control" name="pluginName" placeholder="Please enter the plugin name, enter * uninstall all plugins"/>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">允许重新安装</label>
+                                        <label class="col-md-3 control-label">Allow reinstallation</label>
                                         <div class="col-md-9">
                                             <div id="allowInstall" class="toggle toggle-success"></div>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">评论需要审核</label>
+                                        <label class="col-md-3 control-label">Comments need to be reviewed</label>
                                         <div class="col-md-9">
                                             <div id="allowCommentAudit" class="toggle toggle-success"></div>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">云公共CDN资源</label>
+                                        <label class="col-md-3 control-label">Cloud Public CDN Resources</label>
                                         <div class="col-md-9">
                                             <div id="allowCloudCDN" class="toggle toggle-success"></div>
-                                            <span class="help-block"><small>启用该选项后后台静态资源则使用<code>cdn.bootcss.com</code>加载</small></span>
+                                            <span class="help-block"><small>When this option is enabled, background static resources use<code>cdn.bootcss.com</code>load</small></span>
                                         </div>
                                     </div>
 
@@ -124,7 +124,7 @@
 
                                     <div class="clearfix pull-right">
                                         <button type="button" class="btn btn-inverse waves-effect waves-light" @click="saveAdvanced">
-                                            保存设置
+                                            Save Settings
                                         </button>
                                     </div>
                                 </form>
@@ -169,31 +169,31 @@
                         $('#allowInstall').toggles({
                             on: $vm.allowInstall === 'true',
                             text: {
-                                on: '开启',
-                                off: '关闭'
+                                on: 'Om',
+                                off: 'Off'
                             }
                         });
 
                         $('#allowCommentAudit').toggles({
                             on: $vm.allowCommentAudit === 'true',
                             text: {
-                                on: '开启',
-                                off: '关闭'
+                                on: 'On',
+                                off: 'Off'
                             }
                         });
 
                         $('#allowCloudCDN').toggles({
                             on: $vm.allowCloudCDN === 'true',
                             text: {
-                                on: '开启',
-                                off: '关闭'
+                                on: 'On',
+                                off: 'Off'
                             }
                         });
 
                     },
                     error: function (error) {
                         console.log(error);
-                        alert(error || '数据加载失败');
+                        alert(error || 'Data loading failed');
                     }
                 });
             },
@@ -205,10 +205,10 @@
                     data: param,
                     success: function (result) {
                         if(result && result.success){
-                            tale.alertOk('设置保存成功');
+                            tale.alertOk('Setup saved successfully');
                             $vm.load();
                         } else {
-                            tale.alertError(result.msg || '保存失败');
+                            tale.alertError(result.msg || 'Save failed');
                         }
                     }
                 });
@@ -221,10 +221,10 @@
                     data: param,
                     success: function (result) {
                         if (result && result.success) {
-                            tale.alertOk('选项保存成功');
+                            tale.alertOk('Option saved successfully');
                             $vm.load();
                         } else {
-                            tale.alertError(result.msg || '选项保存失败');
+                            tale.alertError(result.msg || 'Option save failed');
                         }
                     }
                 });

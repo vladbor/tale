@@ -1,24 +1,24 @@
-#include('./header.html',{has_sub:'other', active:'template', title:'编辑模板'})
+#include('./header.html',{has_sub:'other', active:'template', title:'Edit template'})
 <div id="app" class="row" v-cloak>
     <loading :active.sync="isLoading" :can-cancel="true"></loading>
     <div class="col-lg-12">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">编辑模板</h3>
+                <h3 class="panel-title">Edit template</h3>
             </div>
             <div class="panel-body">
                 <div class="row">
                     <select id="tplSelect" onchange="showContent(this)">
-                        <option selected value="">请选择模板文件</option>
+                        <option selected value="">Please select a template file</option>
                         #for(tpl : tpls)
                         <option value="${tpl}">${tpl}</option>
                         #end
                     </select>
 
-                    <button class="btn btn-primary waves-effect waves-light m-b-5" onclick="saveTpl()">保存修改</button>
+                    <button class="btn btn-primary waves-effect waves-light m-b-5" onclick="saveTpl()">Save changes</button>
 
                     <div>
-                        <textarea id="tpl-preview" rows="20" cols="100%" placeholder="选择模板后进行修改"></textarea>
+                        <textarea id="tpl-preview" rows="20" cols="100%" placeholder="Modify after selecting a template"></textarea>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                     },
                     error: function (error) {
                         console.log(error);
-                        alert(error || '数据加载失败');
+                        alert(error || 'Data loading failed');
                     }
                 });
             }
@@ -87,9 +87,9 @@
                 },
                 success: function (result) {
                     if (result && result.success) {
-                        tale.alertOk('模板保存成功');
+                        tale.alertOk('Template saved successfully');
                     } else {
-                        tale.alertError(result.msg || '模板保存失败');
+                        tale.alertError(result.msg || 'Template save failed');
                     }
                 }
             });

@@ -1,7 +1,7 @@
 var mditor, htmlEditor;
 var tale = new $.tale();
 var attach_url = $('#attach_url').val();
-// 每60秒自动保存一次草稿
+// Automatically save drafts every 60 seconds
 var refreshIntervalId;
 Dropzone.autoDiscover = false;
 Vue.component('v-select', VueSelect.VueSelect);
@@ -38,15 +38,15 @@ var vm = new Vue({
             autoclose: true,
             todayBtn: true,
             weekStart: 1,
-            language: 'zh-CN'
+            language: 'en-EN'
         });
 
         mditor = window.mditor = Mditor.fromTextarea(document.getElementById('md-editor'));
         // 富文本编辑器
         htmlEditor = $('.summernote').summernote({
-            lang: 'zh-CN',
+            lang: 'en-EN',
             height: 340,
-            placeholder: '写点儿什么吧...',
+            placeholder: 'Write something...',
             //上传图片的接口
             callbacks: {
                 onImageUpload: function (files) {
@@ -70,7 +70,7 @@ var vm = new Vue({
                                 console.log('url =>' + url);
                                 htmlEditor.summernote('insertImage', url);
                             } else {
-                                tale.alertError(result.msg || '图片上传失败');
+                                tale.alertError(result.msg || 'Image upload failed');
                             }
                         }
                     });
@@ -95,7 +95,7 @@ var vm = new Vue({
                 },
                 error: function (error) {
                     console.log(error);
-                    alert(error || '数据加载失败');
+                    alert(error || 'Data loading failed');
                 }
             });
 
@@ -121,24 +121,24 @@ var vm = new Vue({
                     $('#allowComment').toggles({
                         on: $vm.article.allowComment,
                         text: {
-                            on: '开启',
-                            off: '关闭'
+                            on: 'On',
+                            off: 'Off'
                         }
                     });
 
                     $('#allowPing').toggles({
                         on: $vm.article.allowPing,
                         text: {
-                            on: '开启',
-                            off: '关闭'
+                            on: 'On',
+                            off: 'Off'
                         }
                     });
 
                     $('#allowFeed').toggles({
                         on: $vm.article.allowFeed,
                         text: {
-                            on: '开启',
-                            off: '关闭'
+                            on: 'On',
+                            off: 'Off'
                         }
                     });
 
@@ -146,8 +146,8 @@ var vm = new Vue({
                         $('#addThumb').toggles({
                             on: true,
                             text: {
-                                on: '添加',
-                                off: '取消'
+                                on: 'On',
+                                off: 'Off'
                             }
                         });
 
@@ -160,8 +160,8 @@ var vm = new Vue({
                         $('#addThumb').toggles({
                             on: false,
                             text: {
-                                on: '添加',
-                                off: '取消'
+                                on: 'On',
+                                off: 'Off'
                             }
                         });
                         $('#dropzone-container').hide();
@@ -181,7 +181,7 @@ var vm = new Vue({
                 },
                 error: function (error) {
                     console.log(error);
-                    alert(error || '数据加载失败');
+                    alert(error || 'Data loading failed');
                 }
             });
         },
@@ -203,7 +203,7 @@ var vm = new Vue({
                         if (result && result.success) {
                             callback && callback()
                         } else {
-                            tale.alertError(result.msg || '保存文章失败');
+                            tale.alertError(result.msg || 'Save article failed');
                         }
                     },
                     error: function (error) {
@@ -226,7 +226,7 @@ var vm = new Vue({
                 $('#md-container').hide();
                 $('#html-container').show();
 
-                this_.innerHTML = '切换为Markdown编辑器';
+                this_.innerHTML = 'Switch to Markdown Editor';
 
                 this.article.fmtType = 'html';
             } else {
@@ -240,7 +240,7 @@ var vm = new Vue({
 
                 this.article.fmtType = 'markdown';
 
-                this_.innerHTML = '切换为富文本编辑器';
+                this_.innerHTML = 'Switch to rich text editor';
                 htmlEditor.summernote("code", "");
             }
         },
@@ -249,18 +249,18 @@ var vm = new Vue({
             var content = this.article.fmtType === 'markdown' ? mditor.value : htmlEditor.summernote('code');
             var title = $vm.article.title;
             if (title === '') {
-                tale.alertWarn('请输入文章标题');
+                tale.alertWarn('Please enter the title of the article');
                 return;
             }
             if (content === '') {
-                tale.alertWarn('请输入文章内容');
+                tale.alertWarn('Please enter the content of the article');
                 return;
             }
             clearInterval(refreshIntervalId);
             $vm.article.status = status;
             $vm.autoSave(function () {
                 tale.alertOk({
-                    text: '文章保存成功',
+                    text: 'The article was saved successfully',
                     then: function () {
                         setTimeout(function () {
                             window.location.href = '/admin/articles';
@@ -278,38 +278,38 @@ $(document).ready(function () {
     $('#tags').tagsInput({
         width: '100%',
         height: '35px',
-        defaultText: '请输入文章标签'
+        defaultText: 'Please enter the article label'
     });
 
     $('#allowComment').toggles({
         on: true,
         text: {
-            on: '开启',
-            off: '关闭'
+            on: 'On',
+            off: 'Off'
         }
     });
 
     $('#allowPing').toggles({
         on: true,
         text: {
-            on: '开启',
-            off: '关闭'
+            on: 'On',
+            off: 'Off'
         }
     });
 
     $('#allowFeed').toggles({
         on: true,
         text: {
-            on: '开启',
-            off: '关闭'
+            on: 'On',
+            off: 'Off'
         }
     });
 
     $('#addThumb').toggles({
         on: true,
         text: {
-            on: '添加',
-            off: '取消'
+            on: 'On',
+            off: 'Off'
         }
     });
 
@@ -351,11 +351,11 @@ $(document).ready(function () {
         filesizeBase: 1024,//定义字节算法 默认1000
         maxFilesize: '10', //MB
         fallback: function () {
-            tale.alertError('暂不支持您的浏览器上传!');
+            tale.alertError('Your browser upload is not supported yet!');
         },
         acceptedFiles: 'image/*',
-        dictFileTooBig: '您的文件超过10MB!',
-        dictInvalidInputType: '不支持您上传的类型',
+        dictFileTooBig: 'Your file is over 10MB!',
+        dictInvalidInputType: 'The type you uploaded is not supported',
         headers: {
             'X-CSRF-TOKEN': document.head.querySelector("[name=csrf_token]").content
         },
@@ -375,7 +375,7 @@ $(document).ready(function () {
             });
             this.on('error', function (a, errorMessage, result) {
                 if (!result.success && result.msg) {
-                    tale.alertError(result.msg || '缩略图上传失败');
+                    tale.alertError(result.msg || 'Thumbnail upload failed');
                 }
             });
         }

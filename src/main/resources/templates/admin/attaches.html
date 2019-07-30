@@ -1,4 +1,4 @@
-#include('./header.html',{active:'attaches', title:'文件管理'})
+#include('./header.html',{active:'attaches', title:'Document management'})
 <link href="${cdnURL()}/plugins/dropzone/4.3.0/min/dropzone.min.css" rel="stylesheet">
 <style>
     #dropzone {
@@ -44,7 +44,7 @@
     <loading :active.sync="isLoading" :can-cancel="true"></loading>
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title">附件管理</h3>
+            <h3 class="panel-title">Attachment management</h3>
         </div>
         <div class="panel-body">
             <div class="row">
@@ -56,9 +56,9 @@
                                 <input name="file" type="file" multiple="multiple">
                             </div>
                             <div class="dz-message">
-                                <p>将文件拖至此处或点击上传.${attachURL()}</p>
+                                <p>Drag files here or click Upload.${attachURL()}</p>
                                 <p>
-                                    <span style="font-size: 16px; color: #d0d0d0;">一次最多可以上传10个文件</span>
+                                    <span style="font-size: 16px; color: #d0d0d0;">You can upload up to 10 files at a time</span>
                                 </p>
                             </div>
                         </form>
@@ -68,7 +68,7 @@
                     <div v-if="attachPage.rows.length == 0" class="row">
                         <div class="col-md-4 text-center">
                             <div class="alert alert-warning">
-                                目前还没有一个附件呢，你可以上传试试!
+                                There is currently no attachment yet, you can upload it and try it!
                             </div>
                         </div>
                     </div>
@@ -86,11 +86,11 @@
                         <div class="clearfix">
                             <button :url="'${attachURL()}' + item.fkey" type="button"
                                     class="btn btn-warning btn-sm waves-effect waves-light m-t-5 copy">
-                                <i class="fa fa-copy"></i> <span>复制</span>
+                                <i class="fa fa-copy"></i> <span>copy</span>
                             </button>
                             <button type="button" class="btn btn-danger btn-sm waves-effect waves-light m-t-5"
                                     @click="deleteAttach(item.id)">
-                                <i class="fa fa-trash-o"></i> <span>删除</span>
+                                <i class="fa fa-trash-o"></i> <span>delete</span>
                             </button>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                     <ul class="pagination m-b-5 pull-right">
                         <li v-if="attachPage.hasPrevPage">
                             <a @click="load(attachPage.prevPage)" aria-label="Previous">
-                                <i class="fa fa-angle-left"></i>&nbsp;上一页
+                                <i class="fa fa-angle-left"></i>&nbsp;Previous page
                             </a>
                         </li>
 
@@ -110,10 +110,10 @@
                         </li>
                         <li v-if="attachPage.hasNextPage">
                             <a type="button" class="page-link" @click="load(attachPage.nextPage)">
-                                下一页&nbsp;<i class="fa fa-angle-right"></i>
+                                Next page&nbsp;<i class="fa fa-angle-right"></i>
                             </a>
                         </li>
-                        <li><span>共 {{attachPage.totalPages}} 页</span></li>
+                        <li><span>Total {{attachPage.totalPages}} pages</span></li>
                     </ul>
 
                 </div>
@@ -154,23 +154,23 @@
                     },
                     error: function (error) {
                         console.log(error);
-                        alert(error || '数据加载失败');
+                        alert(error || 'Data loading failed');
                     }
                 });
             },
             deleteAttach: function (id) {
                 var $vm = this;
                 tale.alertConfirm({
-                    title: '确定删除该附件吗?',
+                    title: 'Are you sure you want to delete this attachment?',
                     then: function () {
                         tale.post({
                             url: '/admin/api/attach/delete/' + id,
                             success: function (result) {
                                 if (result && result.success) {
-                                    tale.alertOk('附件删除成功');
+                                    tale.alertOk('Attachment deleted successfully');
                                     $vm.load(1);
                                 } else {
-                                    tale.alertError(result.msg || '附件删除失败');
+                                    tale.alertError(result.msg || 'Attachment deletion failed');
                                 }
                             }
                         });
@@ -188,28 +188,28 @@
         maxFiles: $.constant().MAX_FILES,//最大文件数量
         maxFilesize: '${maxFileSize()}', //MB
         fallback: function () {
-            tale.alertError('暂不支持您的浏览器上传!');
+            tale.alertError('Your browser upload is not supported yet!');
         },
         uploadMultiple: true,
-        dictFileTooBig: '您的文件超过' + ${max_file_size} +'MB!',
-        dictInvalidInputType: '不支持您上传的类型',
-        dictMaxFilesExceeded: '您的文件超过' + $.constant().MAX_FILES + '个!',
+        dictFileTooBig: 'Your file exceeds' + ${max_file_size} +'MB!',
+        dictInvalidInputType: 'The type you uploaded is not supported',
+        dictMaxFilesExceeded: 'Your file exceeds' + $.constant().MAX_FILES + 'One!',
         headers: {
             'X-CSRF-TOKEN': document.head.querySelector("[name=csrf_token]").content
         },
         init: function () {
             this.on('queuecomplete', function (files) {
-                tale.alertOk('上传成功');
+                tale.alertOk('Upload success');
                 vm.load(1);
             });
             this.on('error', function (a, errorMessage, result) {
                 if (!result.success && result.msg) {
-                    tale.alertError(result.msg || '上传失败');
+                    tale.alertError(result.msg || 'upload failed');
                 }
             });
             this.on('maxfilesreached', function () {
                 this.removeAllFiles(true);
-                tale.alertWarn('文件数量超出限制');
+                tale.alertWarn('The number of files exceeds the limit');
             });
         }
     });

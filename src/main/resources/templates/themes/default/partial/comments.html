@@ -3,27 +3,27 @@
     <div id="comments" class="clearfix">
         #if(article.allowComment)
         <span class="response">#if(null!=login_user) Hi，<a href="${login_user.homeUrl}" data-no-instant>${login_user.username}</a>
-            如果你想 <a href="/logout" title="注销" data-no-instant>注销</a> ? #end</span>
+            if you want <a href="/logout" title="Logout" data-no-instant>Logout</a> ? #end</span>
 
         <form method="post" id="comment-form" class="comment-form" onsubmit="return TaleComment.subComment();">
             <input type="hidden" name="coid" id="coid"/>
             <input type="hidden" name="cid" id="cid" value="${article.cid}"/>
             <input type="hidden" name="csrf_token" value="${csrf_token}"/>
             <input name="author" maxlength="12" id="author" class="form-control input-control clearfix"
-                   placeholder="姓名 (*)" value="${login_user.username ?! ''}" required/>
-            <input type="email" name="mail" id="mail" class="form-control input-control clearfix" placeholder="邮箱 (*)"
+                   placeholder="Userame (*)" value="${login_user.username ?! ''}" required/>
+            <input type="email" name="mail" id="mail" class="form-control input-control clearfix" placeholder="e-mail (*)"
                    value="${login_user.email ?! ''}" required/>
-            <input type="url" name="url" id="url" class="form-control input-control clearfix" placeholder="网址 (http://)"
+            <input type="url" name="url" id="url" class="form-control input-control clearfix" placeholder="URL (http://)"
                    value="${login_user.homeUrl ?! ''}"/>
-            <textarea name="content" id="textarea" class="form-control" placeholder="基佬，留下你的评论." required minlength="5" maxlength="2000"></textarea>
+            <textarea name="content" id="textarea" class="form-control" placeholder="Basic, leave your comment." required minlength="5" maxlength="2000"></textarea>
 
             ${_csrf_token_input}
 
-            <button class="submit" id="misubmit">提交</button>
+            <button class="submit" id="misubmit">submit</button>
         </form>
 
         #else
-        <span class="response">评论已关闭.</span>
+        <span class="response">Comment closed.</span>
         #end
 
         #set( comments = comments(6) )
@@ -48,7 +48,7 @@
                         <div class="comment-meta">
                             <time class="comment-time">${fmtdate(comment.created)}</time>
                             <span class="comment-reply">
-                                <a rel="nofollow" onclick="TaleComment.reply('${comment.coid}');">回复</a>
+                                <a rel="nofollow" onclick="TaleComment.reply('${comment.coid}');">Reply</a>
                             </span>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                                     <div class="comment-meta">
                                         <time class="comment-time">${fmtdate(child.created)}</time>
                                         <span class="comment-reply">
-                                            <a rel="nofollow" onclick="TaleComment.reply('${child.coid}');">回复</a>
+                                            <a rel="nofollow" onclick="TaleComment.reply('${child.coid}');">Reply</a>
                                         </span>
                                     </div>
                                 </div>
