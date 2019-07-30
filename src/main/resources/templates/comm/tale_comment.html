@@ -15,7 +15,7 @@
                     dataType: 'json',
                     error: function (jqXHR, status, error) {
                         if(status === 'error' && jqXHR.status === 400){
-                            alert('非法的请求');
+                            alert('Illegal request');
                         } else {
                             console.log('Request Error:', error)
                         }
@@ -23,7 +23,7 @@
                     success: function (result) {
                         $('#comment-form input[name=coid]').val('');
                         if (result && result.success) {
-                            alert('评论成功');
+                            alert('Comment successful');
                             window.location.reload();
                         } else {
                             if (result.msg) {

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>${title ?! '博客后台'} - Tale</title>
+    <title>${title ?! 'Blog background'} - Tale</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta content="biezhi" name="author"/>
     <meta content="${_csrf_token}" name="csrf_token"/>
@@ -64,9 +64,9 @@
                             <a href="index.html" class="dropdown-toggle profile" data-toggle="dropdown"
                                aria-expanded="true"><img src="${gravatar(login_user.email)}" alt="user-img" class="img-circle"> </a>
                             <ul class="dropdown-menu">
-                                <li><a href="${site_url()}" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i> 预览站点</a></li>
-                                <li><a href="/admin/profile"><i class="fa fa-sun-o"></i> 个人设置</a></li>
-                                <li><a href="/logout"><i class="fa fa-sign-out"></i> 注销</a></li>
+                                <li><a href="${site_url()}" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i> Preview site</a></li>
+                                <li><a href="/admin/profile"><i class="fa fa-sun-o"></i> Personal settings</a></li>
+                                <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -79,44 +79,44 @@
             <div id="sidebar-menu">
                 <ul>
                     <li #if(active=='home') class="active" #end>
-                        <a href="/admin/index" class="waves-effect #if(active=='home') active #end"><i class="fa fa-dashboard" aria-hidden="true"></i><span> 仪表盘 </span></a>
+                        <a href="/admin/index" class="waves-effect #if(active=='home') active #end"><i class="fa fa-dashboard" aria-hidden="true"></i><span> Dashboard </span></a>
                     </li>
                     <li #if(active=='publish') class="active" #end>
-                        <a href="/admin/article/new" class="waves-effect #if(active=='publish') active #end"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><span> 发布文章 </span></a>
+                        <a href="/admin/article/new" class="waves-effect #if(active=='publish') active #end"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><span> Post article </span></a>
                     </li>
                     <li #if(active=='articles') class="active" #end>
-                        <a href="/admin/articles" class="waves-effect #if(active=='articles') active #end"><i class="fa fa-list" aria-hidden="true"></i><span> 文章管理 </span></a>
+                        <a href="/admin/articles" class="waves-effect #if(active=='articles') active #end"><i class="fa fa-list" aria-hidden="true"></i><span> Article management </span></a>
                     </li>
 
                     <li #if(active=='pages') class="active" #end>
-                        <a href="/admin/pages" class="waves-effect #if(active=='pages') active #end"><i class="fa fa-file-text" aria-hidden="true"></i><span> 页面管理 </span></a>
+                        <a href="/admin/pages" class="waves-effect #if(active=='pages') active #end"><i class="fa fa-file-text" aria-hidden="true"></i><span> Page management </span></a>
                     </li>
 
                     <li #if(active=='attaches') class="active" #end>
-                        <a href="/admin/attaches" class="waves-effect #if(active=='attaches') active #end"><i class="fa fa-cloud-upload" aria-hidden="true"></i><span> 文件管理 </span></a>
+                        <a href="/admin/attaches" class="waves-effect #if(active=='attaches') active #end"><i class="fa fa-cloud-upload" aria-hidden="true"></i><span> Document management </span></a>
                     </li>
 
                     <li class="has_sub">
-                        <a href="javascript:void(0)" class="waves-effect #if(has_sub=='other') active subdrop #end"><i class="fa fa-cubes"></i><span> 其他管理 </span><span class="pull-right"><i class="fa fa-plus"></i></span></a>
+                        <a href="javascript:void(0)" class="waves-effect #if(has_sub=='other') active subdrop #end"><i class="fa fa-cubes"></i><span> Other management </span><span class="pull-right"><i class="fa fa-plus"></i></span></a>
                         <ul class="list-unstyled">
                             <li #if(active=='comments') class="active" #end>
-                                <a href="/admin/comments" class="waves-effect #if(active=='comments') active #end"><i class="fa fa-comments" aria-hidden="true"></i><span> 评论管理 </span></a>
+                                <a href="/admin/comments" class="waves-effect #if(active=='comments') active #end"><i class="fa fa-comments" aria-hidden="true"></i><span> Comment management </span></a>
                             </li>
                             <li #if(active=='categories') class="active" #end>
-                                <a href="/admin/categories" class="waves-effect #if(active=='categories') active #end"><i class="fa fa-tags" aria-hidden="true"></i><span> 分类/标签 </span></a>
+                                <a href="/admin/categories" class="waves-effect #if(active=='categories') active #end"><i class="fa fa-tags" aria-hidden="true"></i><span> Classification/label </span></a>
                             </li>
                             <li #if(active=='template') class="active" #end>
-                                <a href="/admin/template" class="waves-effect #if(active=='template') active #end"><i class="fa fa-hashtag"></i><span> 编辑模板 </span></a>
+                                <a href="/admin/template" class="waves-effect #if(active=='template') active #end"><i class="fa fa-hashtag"></i><span> Edit template </span></a>
                             </li>
                         </ul>
                     </li>
 
                     <li #if(active=='themes') class="active" #end>
-                        <a href="/admin/themes" class="waves-effect #if(active=='themes') active #end"><i class="fa fa-diamond" aria-hidden="true"></i><span> 主题设置 </span></a>
+                        <a href="/admin/themes" class="waves-effect #if(active=='themes') active #end"><i class="fa fa-diamond" aria-hidden="true"></i><span> Theme setting </span></a>
                     </li>
 
                     <li #if(active=='setting') class="active" #end>
-                        <a href="/admin/setting" class="waves-effect #if(active=='setting') active #end"><i class="fa fa-gear" aria-hidden="true"></i><span> 系统设置 </span></a>
+                        <a href="/admin/setting" class="waves-effect #if(active=='setting') active #end"><i class="fa fa-gear" aria-hidden="true"></i><span> System settings </span></a>
                     </li>
 
                     #for(item : plugin_menus)

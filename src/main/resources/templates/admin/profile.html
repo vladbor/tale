@@ -1,40 +1,40 @@
-#include('./header.html',{active:'home', title:'个人设置'})
+#include('./header.html',{active:'home', title:'Personal settings'})
 <div class="row">
 
     <div class="col-sm-12">
-        <h4 class="page-title">个人设置</h4>
+        <h4 class="page-title">Personal settings</h4>
     </div>
 
     <div class="col-md-6">
         <div class="panel panel-color panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">个人信息</h3>
+                <h3 class="panel-title">Personal settings</h3>
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" role="form" id="user-form">
                     <div class="form-group">
-                        <label class="col-md-3 control-label">账号</label>
+                        <label class="col-md-3 control-label">Account number</label>
                         <div class="col-md-9">
                             <input type="text" class="form-control" value="${login_user.username}" readonly disabled/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">姓名</label>
+                        <label class="col-md-3 control-label">Name</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="screenName" placeholder="输入您的姓名"
+                            <input type="text" class="form-control" name="screenName" placeholder="Enter your name"
                                    value="${login_user.screenName}" required aria-required="true"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">邮箱</label>
+                        <label class="col-md-3 control-label">e-mail</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="email" placeholder="输入您的邮箱"
+                            <input type="text" class="form-control" name="email" placeholder="Enter your email address"
                                    value="${login_user.email}" required aria-required="true"/>
                         </div>
                     </div>
                     <div class="clearfix pull-right">
                         <button type="button" class="btn btn-primary waves-effect waves-light" onclick="saveSetting()">
-                            保存信息
+                            Save information
                         </button>
                     </div>
                 </form>
@@ -45,33 +45,33 @@
     <div class="col-md-6">
         <div class="panel panel-color panel-danger">
             <div class="panel-heading">
-                <h3 class="panel-title">修改密码</h3>
+                <h3 class="panel-title">Change password</h3>
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" role="form" id="pwd-form">
                     <div class="form-group">
-                        <label class="col-md-3 control-label">输入旧密码</label>
+                        <label class="col-md-3 control-label">Enter the old password</label>
                         <div class="col-md-9">
                             <input type="password" class="form-control" name="old_password" required
                                    aria-required="true"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">输入新密码</label>
+                        <label class="col-md-3 control-label">Enter a new password</label>
                         <div class="col-md-9">
                             <input type="password" name="password" id="password1" class="form-control" required
                                    aria-required="true" rangelength="[6,14]"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">确认新密码</label>
+                        <label class="col-md-3 control-label">Confirm the new password</label>
                         <div class="col-md-9">
                             <input type="password" name="repass" class="form-control" equalTo="#password1"/>
                         </div>
                     </div>
                     <div class="clearfix pull-right">
                         <button type="submit" class="btn btn-danger waves-effect waves-light">
-                            设置密码
+                            Set password
                         </button>
                     </div>
                 </form>
@@ -87,7 +87,7 @@
     var tale = new $.tale();
 
     /**
-     * 保存个人信息
+     * Save personal information
      */
     function saveSetting() {
         var param = $('#user-form').serialize();
@@ -96,9 +96,9 @@
             data: param,
             success: function (result) {
                 if(result && result.success){
-                    tale.alertOk('保存成功');
+                    tale.alertOk('Successfully saved');
                 } else {
-                    tale.alertError(result.msg || '保存失败');
+                    tale.alertError(result.msg || 'Save failed');
                 }
             }
         });
@@ -112,9 +112,9 @@
                 data: params,
                 success: function (result) {
                     if(result && result.success){
-                        tale.alertOk('密码修改成功');
+                        tale.alertOk('Password reset complete');
                     } else {
-                        tale.alertError(result.msg || '密码修改失败');
+                        tale.alertError(result.msg || 'Password modification failed');
                     }
                 }
             });
